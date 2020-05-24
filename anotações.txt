@@ -1,0 +1,106 @@
+# Carregar as ontologias
+# um programa so existe se existirem portas de entrada e saida
+# uma porta so existe se existirem coleções para elas
+# para inserir atributos é necessário ter uma coleção
+
+# 1. Introduction
+#   Workflows e execução de experimentos (linha 77)
+#   Importancia da variação de workflows e representá-los em nivel de experimento (linha 83)
+#   Foi levantado a importancia de explines e sua complexidade (definir compatibilidades/restrições) (linha 87)
+#   Foi levantada a importancia de uma estrutura heterogênea que correlaciona e verifica as derivações (linha 96)
+#   O uso de ontologias foi baseado na correlação de desafios em expline e propositos fair: (i) correlacionar dados
+#   heterogeneos(dominio, tarefa, proveniencia e metadados); (ii) aplicar formalismos para fins de verificação a coerencia do resultados
+#   Foi usada uma referencia sobre interoperabilidade semantica e ontologias (verificar viabilidade da referencia linha 102)
+# 2. Methodology
+#   Porque utilizar ontologias, como sao classificadas
+#   Importancia de se utilizar metodologias para ontologia + exemplos
+#   Breve descrição da METHONTOLOGY
+# 3. Knowledge Acquisition
+#   - Pulei
+#   No artigo da ontologia musical os autores fornecem três situações específicas,
+#   podemos fornecer situações de hpc e responder questões sobre elas na Evaluation?
+# 4. Specification
+# 4.1 Functional Requirements
+#   Foi definida uma questão de competencia geral e depois foi derivada em sub-questões
+# 4.2 Non-Fuctional Requirements - Foi importante pra justificar a modularização e integração com outras ontologias
+#   O que se espera da ontologia levando em consideração: Requisitos de qualidade, projeto e intenção de uso
+#   Importancia de produzir estruturas modulares (sub-ontologias) - artigo da sabio (pode?)
+#   Requisitos formais: o que é necessário sistematizar relacionado as sub-ontologias
+# 4.3 Formal Requirements
+# 5. Ontology Description: Conceptualization and Integration - Falo sobre os quatro namespaces e sua importancia
+# 5.1 Tasks Namespaces - ProvONE e ExpLine
+# 5.2 Domain Data and Metadata Namespaces
+# 5.3 Rules
+#   Dúvidas
+# 6. Evaluation: A Pratical Approach
+#   Refazendo o exemplo
+# 7. Conclusions
+
+# AXIOMA: regra considerada como um consenso inicial necessário para a construção ou aceitação de uma teoria
+# Artigo Ontologia Musical:
+# Regra 1. Se uma instância iot: Thing também estiver conectada através de rdf: type para uma classe pertencente à Music Ontology, também é uma instância do iomust: MusicalThing
+# Regra 2. Se uma instância iot: Application também estiver conectada através de iot: isInvolvedIn a uma instância de uma classe pertencente à Ontologia da Música ou ao
+# iomust namespace, também é uma instância de
+# iomust: MusicalThingApplication
+
+# Se uma classe/instancia edam:operation estiver conectada via rdf:type a expline:activity_type, ela é uma instancia expline:activity_type
+# se uma instancia provone:program estiver conectada via rdf:type a uma instancia expline:program_type, ela é uma instancia expline:program_type
+# Para uma atividade abstrata existir, deve existir de antemão um programa que a implemente. O programa implementador deve ser de um tipo de domínio que corresponda ao tipo da atividade
+# uma Atividade abstrata só deve consumir coleções de tipos compatíveis
+
+
+   
+
+# port("input_removepipe", "input" ,["at1_in","at2_in","at3_in"])
+# port("output_removepipe", "output" ,["at1_out","at2_out","at3_out"])
+# program("remove_pipe", "edam:Sequencing_quality_control")
+# provone = get_ontology("ontologies/provone_git.owl").load()
+# edam    = get_ontology("ontologies/EDAM_termos.owl").load()
+# dcmi    = get_ontology("ontologies/dcmi.owl").load()
+# expline = get_ontology("ontologies/expline.owl").load()
+
+#definir os tipos de dominio que serao usados (define o nivel de abstração)
+#criar o workflow na provone
+#criar a linha de experimento
+
+
+# acrescentar classes edam como tipo tambem em atividade abstrata
+
+------------------------------------------------------------------------
+reuniao do dia 19/05
+    # pra associar um programa a uma atividade definir um conjunto de metadados (se for serviço web, ter url....)
+    # verificar se a operação do dominio, aa, e programas sao compativeis
+    # aa nao podem consumir mais atributos do que o que foi gerado para ela
+    # toda atividade abstrata deve possuir pelo menos um programa que a implemente
+    # no nivel de operações, as operações não podem ser equivalentes
+    # portas e atributos devem ser do mesmo tipo (de dominio e compatibilidade de dado)
+
+#dependencias dos programas
+1) Para definir um programa, verificar um conjunto de metadados básicos associados a ele, para isso é necessário definir o perfil do programa:
+    1.1) se for um serviço web: devem ser associado a ele metadados sobre a url do programa na rede 
+    1.2) se for um programa instalável, devem ser associado a ele as compatibilidades de sistemas operacionais
+        Sugestões:  - definir previamente módulos de metadado de acordo com o perfil do programa, definidos na ontologia ou na api como foi feito
+                        para as operações de domínio
+                    - Módulos gerais opcionais
+                    - Módulos específicos mandatórios de acordo com o perfil do programa
+        *aguardando aprovação
+    1.3) tipos de dados/arquivos consumidos/gerados - importante para a verificação de compatibilidade entre programas/portas/atributos
+        *sendo trabalhado no momento: atributo mandatorio/opcional: possiveis valores que ele pode assumir
+
+2) Para associar um programa implementador a uma atividade:
+    2.1) Deve-se verificar se ambos são compatíveis de acordo com a operação de domínio sendo definida. Isso auxilia na coerencia do fluxo, evitando com
+    que programas incompatíveis com operações de domínio sejam definidos como implementadores: verifica_tipo_operacao(tipoOperacao, programa, atividade)
+    *sendo trabalhado no momento
+
+3)  Portas e atributos devem ser compatíveis quanto ao seu tipo
+    3.1) agregar tipo de domínio também ao atributo e porta
+    3.2) diferenciar atributo de dado de atributo de configuração. Atributos de configuração são parâmetros que podem ser definidos de forma opcional 
+    na execução do programa. As relações de entrada podem ser compostas por atributos de dado gerados no fluxo, e atributos de configuração.
+    Esses atributos de configuração assim como as atividades, podem ser opcionais ou obrigatórios. Mafft por exemplo, permite definição de um atributo somente
+    se um determinado atributo já estiver sido definido gerando dependência: -- LEXP e --LOP dependem de --genafpair // --lop e --lexp dependem de 
+    --localpair ou --genafpair.  Sugestão: criar relação de dependência entre atributos
+    dependsOn([LEXP, LOP], [genafpair]) -> dependencia "mandatória"  
+    dependsOn([lop, lexp], [localpair, genafpair]) -> dependencia "variante"
+    Essa verificação deve ser feita no momento de criar a relação
+    *aguardando aprovação
+    setdependence() entre atributos
