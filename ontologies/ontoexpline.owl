@@ -390,11 +390,6 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Terms of use of artefact</rdfs:seeAlso>
 </owl:Class>
 
-<owl:Class rdf:about="#Uri">
-  <rdfs:subClassOf rdf:resource="#Metadata"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource identifier</rdfs:seeAlso>
-</owl:Class>
-
 <owl:Class rdf:about="#Url">
   <rdfs:subClassOf rdf:resource="#Metadata"/>
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource locator</rdfs:seeAlso>
@@ -416,6 +411,16 @@
 
 <owl:Class rdf:about="#class_programtype_invalid_2">
   <rdfs:subClassOf rdf:resource="#Bio"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Uri2">
+  <rdfs:subClassOf rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource identifier</rdfs:seeAlso>
+</owl:Class>
+
+<owl:Class rdf:about="#Uri">
+  <rdfs:subClassOf rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource identifier</rdfs:seeAlso>
 </owl:Class>
 
 <Abstract_activity rdf:about="#AA_Alignment">
@@ -664,6 +669,12 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OFF or ON (for Clustal output only)</rdfs:seeAlso>
 </Description>
 
+<Metadata rdf:about="#Termo_De_Uso">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
+</Metadata>
+
 <Metadata rdf:about="#Termo_de_Uso_Clustalw">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdf:type rdf:resource="#Terms_of_use"/>
@@ -688,11 +699,11 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All pairwise alignments are computed with the Needleman-Wunsch algorithm. More accurate but slower than --6merpair. Suitable for a set of globally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (G-INS-i). Default: off (6mer distance is used)</rdfs:seeAlso>
 </Description>
 
-<Description rdf:about="#6merpair_Description">
+<Metadata rdf:about="#new_name">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Metadata"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Distance is calculated based on the number of shared 6mers. Default: on</rdfs:seeAlso>
-</Description>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
+</Metadata>
 
 <Metadata rdf:about="#pastel">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -700,11 +711,11 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
 </Metadata>
 
-<Metadata rdf:about="#new_name">
+<Description rdf:about="#6merpair_Description">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Terms_of_use"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
-</Metadata>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Distance is calculated based on the number of shared 6mers. Default: on</rdfs:seeAlso>
+</Description>
 
 
 </rdf:RDF>
