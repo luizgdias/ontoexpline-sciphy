@@ -31,3 +31,13 @@ def create_metadata(ontoexpline, artefact , metadata_type, metadata_name, metada
     print(metadata)
     print(artefact)
     # artefact.hasMetadata.append(metadata)
+    return(metadata)
+
+def rename_entity(ontoexpline, entity, new_name):
+    # o rename deve realizar uma busca por entidades de acordo com o novo nome
+    # caso ja exista uma entidade com o novo nome, da erro, porque nao podem ser inseridos termos de mesmo nome.
+    print('*****************')
+    print(entity.name)
+    entity.name = new_name
+    print(entity)
+    return(entity)

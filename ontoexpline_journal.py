@@ -2,7 +2,7 @@ from domain_operation import define_domain_operation, list_operations
 from attribute import create_attribute
 from relation import create_relation
 from metadata import create_metadata_type
-from metadata import create_metadata
+from metadata import create_metadata, rename_entity
 from program import create_program
 from relation import create_relation, associate_relation_to_attributes
 import program
@@ -25,7 +25,7 @@ sequencing_quality_control  = define_domain_operation(ontoexpline, ontoexpline.B
 sequence_alignment          = define_domain_operation(ontoexpline, ontoexpline.Bio, ontoexpline.Sequence_alignment_operation_0292)
 
 # listar operations
-operations = list_operations(ontoexpline, ontoexpline.Bio)
+# operations = list_operations(ontoexpline, ontoexpline.Bio)
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ validator_program       =   create_program(ontoexpline, 'Remove_Pipe', sequencin
 # criando metadados e relacionando a individuos do tipo Program:
 metadata    =   create_metadata(ontoexpline, validator_program , description, 'Description_Remove_Pipe', 'programa que valida a sequencia de entrada') 
 metadata2   =   create_metadata(ontoexpline, validator_program , terms_of_use, 'Termo_De_Uso', 'termo de uso remove_pipe') 
-
+rename1     =   rename_entity(ontoexpline, metadata2, 'new_name')
 # criando individuo do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
 sequence_input  =   create_attribute(ontoexpline, 'Sequence_input')
 metadata3   =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input', 'sequencia de alinhamento - arquivo de entrada') 
@@ -73,7 +73,7 @@ out_relation_remove_pipe   =   create_relation(ontoexpline, 'Relation_out_Remove
 associate_relation_to_attributes(ontoexpline, out_relation_remove_pipe, 'output', [validated_sequence])
 
 # criando atividade abstrata : create_abstract_activity(ontologia, 'nome da atividade', relação de entrada, relação de saida, opcionalidade)
-aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality_control,  [in_relation1], [out_relation_remove_pipe], False)
+# aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality_control,  [in_relation1], [out_relation_remove_pipe], False)
 # -------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -173,10 +173,10 @@ out_relation_clustalw   =   create_relation(ontoexpline, 'Relation_out_Clustalw'
 associate_relation_to_attributes(ontoexpline, out_relation_clustalw, 'output', [aligned_sequence])
 
 # criando atividade abstrata 2
-aa_2    = create_abstract_activity(ontoexpline, 'AA_Alignment', sequence_alignment,  [in_relation_mafft, in_relation_muscle, in_relation_clustalw], [out_relation_clustalw, out_relation_mafft, out_relation_muscle], False)
+# aa_2    = create_abstract_activity(ontoexpline, 'AA_Alignment', sequence_alignment,  [in_relation_mafft, in_relation_muscle, in_relation_clustalw], [out_relation_clustalw, out_relation_mafft, out_relation_muscle], False)
 
 # criando canal
-ch1     = create_channel(ontoexpline, 'ch_validation_alignment', [out_relation_remove_pipe, in_relation_clustalw, in_relation_mafft, in_relation_muscle])
+# ch1     = create_channel(ontoexpline, 'ch_validation_alignment', [out_relation_remove_pipe, in_relation_clustalw, in_relation_mafft, in_relation_muscle])
 
 # salvando na ontologia
 ontoexpline.save(file = "ontologies/ontoexpline.owl", format = "rdfxml")

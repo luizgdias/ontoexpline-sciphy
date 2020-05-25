@@ -418,351 +418,6 @@
   <rdfs:subClassOf rdf:resource="#Bio"/>
 </owl:Class>
 
-<Program rdf:about="#Remove_Pipe">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Sequencing_quality_control"/>
-  <hasInPort rdf:resource="#in_port_Remove_Pipe"/>
-  <hasMetadata rdf:resource="#Description_Remove_Pipe"/>
-  <hasMetadata rdf:resource="#Termo_De_Uso"/>
-  <hasOutPort rdf:resource="#out_port_Remove_Pipe"/>
-</Program>
-
-<Port rdf:about="#in_port_Remove_Pipe">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#Remove_Pipe"/>
-</Port>
-
-<Metadata rdf:about="#Description_Remove_Pipe">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">programa que valida a sequencia de entrada</rdfs:seeAlso>
-</Metadata>
-
-<Metadata rdf:about="#Termo_De_Uso">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Terms_of_use"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
-</Metadata>
-
-<Port rdf:about="#out_port_Remove_Pipe">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#Remove_Pipe"/>
-</Port>
-
-<Attribute rdf:about="#Sequence_input">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Description_Sequence_Input"/>
-</Attribute>
-
-<Metadata rdf:about="#Description_Sequence_Input">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sequencia de alinhamento - arquivo de entrada</rdfs:seeAlso>
-</Metadata>
-
-<Relation rdf:about="#Relation_in_Remove_Pipe">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#Sequence_input"/>
-</Relation>
-
-<Attribute rdf:about="#Validated_sequence">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Description_Validated_Sequence"/>
-</Attribute>
-
-<Metadata rdf:about="#Description_Validated_Sequence">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sequencia de alinhamento validada</rdfs:seeAlso>
-</Metadata>
-
-<Relation rdf:about="#Relation_out_Remove_Pipe">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
-</Relation>
-
-<Channel rdf:about="#ch_validation_alignment">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Channel>
-
-<Abstract_activity rdf:about="#AA_Validation">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Sequencing_quality_control"/>
-  <hasInputRelation rdf:resource="#Relation_in_Remove_Pipe"/>
-  <hasOutputRelation rdf:resource="#Relation_out_Remove_Pipe"/>
-</Abstract_activity>
-
-<Program rdf:about="#Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Sequence_alignment_operation_0292"/>
-  <hasInPort rdf:resource="#in_port_Mafft"/>
-  <hasMetadata rdf:resource="#Description_Mafft"/>
-  <hasMetadata rdf:resource="#Termo_de_Uso_Mafft"/>
-  <hasOutPort rdf:resource="#out_port_Mafft"/>
-</Program>
-
-<Port rdf:about="#in_port_Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#Mafft"/>
-</Port>
-
-<Metadata rdf:about="#Description_Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">programa que alinha sequencias</rdfs:seeAlso>
-</Metadata>
-
-<Metadata rdf:about="#Termo_de_Uso_Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Terms_of_use"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso do mafft</rdfs:seeAlso>
-</Metadata>
-
-<Port rdf:about="#out_port_Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#Mafft"/>
-</Port>
-
-<Attribute rdf:about="#Auto">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Mafft_Auto"/>
-</Attribute>
-
-<Metadata rdf:about="#Mafft_Auto">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Automatically selects an appropriate strategy from L-INS-i, FFT-NS-i and FFT-NS-2, according to data size. Default: off (always FFT-NS-2)</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#6merpair">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#6merpair_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#6merpair_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Distance is calculated based on the number of shared 6mers. Default: on</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#GlobalPair">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#globalpair_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#globalpair_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All pairwise alignments are computed with the Needleman-Wunsch algorithm. More accurate but slower than --6merpair. Suitable for a set of globally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (G-INS-i). Default: off (6mer distance is used)</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#Op">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Op_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#Op_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gap opening penalty at group-to-group alignment. Default: 1.53</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#Ep">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Ep_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#Ep_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Offset value, which works like gap extension penalty, for group-to-group alignment. Default: 0.123</rdfs:seeAlso>
-</Metadata>
-
-<Relation rdf:about="#Relation_in_Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
-  <composedBy rdf:resource="#Auto"/>
-  <composedBy rdf:resource="#6merpair"/>
-  <composedBy rdf:resource="#GlobalPair"/>
-  <composedBy rdf:resource="#Op"/>
-  <composedBy rdf:resource="#Ep"/>
-</Relation>
-
-<Attribute rdf:about="#aligned_sequence">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Relation rdf:about="#Relation_out_Mafft">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#aligned_sequence"/>
-</Relation>
-
-<Program rdf:about="#Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Sequence_alignment_operation_0292"/>
-  <hasInPort rdf:resource="#in_port_Muscle"/>
-  <hasMetadata rdf:resource="#Description_Muscle"/>
-  <hasMetadata rdf:resource="#Termo_de_Uso_Muscle"/>
-  <hasOutPort rdf:resource="#out_port_Muscle"/>
-</Program>
-
-<Port rdf:about="#in_port_Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#Muscle"/>
-</Port>
-
-<Metadata rdf:about="#Description_Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Muscle: programa que alinha sequencias</rdfs:seeAlso>
-</Metadata>
-
-<Metadata rdf:about="#Termo_de_Uso_Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Terms_of_use"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Muscle: termo de uso</rdfs:seeAlso>
-</Metadata>
-
-<Port rdf:about="#out_port_Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#Muscle"/>
-</Port>
-
-<Attribute rdf:about="#Maxhours">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#MaxHour_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#MaxHour_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximim time. If h hours have elpased, then complete the current iteration and stop. Default no time limit.</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#Maxiter">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Maxiter_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#Maxiter_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum number of iterations to run. Default 16. Set to 2 for large datasets where refinement (iterations 3+) is too slow.</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#OutFileName">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#OutFileName_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#OutFileName_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output file, default format is aligned FASTA. </rdfs:seeAlso>
-</Metadata>
-
-<Relation rdf:about="#Relation_in_Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
-  <composedBy rdf:resource="#Maxhours"/>
-  <composedBy rdf:resource="#Maxiter"/>
-  <composedBy rdf:resource="#OutFileName"/>
-</Relation>
-
-<Relation rdf:about="#Relation_out_Muscle">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#aligned_sequence"/>
-</Relation>
-
-<Program rdf:about="#ClustalW">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Sequence_alignment_operation_0292"/>
-  <hasInPort rdf:resource="#in_port_ClustalW"/>
-  <hasMetadata rdf:resource="#Description_Clustalw"/>
-  <hasMetadata rdf:resource="#Termo_de_Uso_Clustalw"/>
-  <hasOutPort rdf:resource="#out_port_ClustalW"/>
-</Program>
-
-<Port rdf:about="#in_port_ClustalW">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#ClustalW"/>
-</Port>
-
-<Metadata rdf:about="#Description_Clustalw">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clustalw: programa que alinha sequencias</rdfs:seeAlso>
-</Metadata>
-
-<Metadata rdf:about="#Termo_de_Uso_Clustalw">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Terms_of_use"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clustalw: termo de uso</rdfs:seeAlso>
-</Metadata>
-
-<Port rdf:about="#out_port_ClustalW">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <isUsedBy rdf:resource="#ClustalW"/>
-</Port>
-
-<Attribute rdf:about="#Interactive">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Interactive_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#Interactive_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ead command line, then enter normal interactive menus</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#QuickTree">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#QuickTree_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#QuickTree_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">use FAST algorithm for the alignment guide tree</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#Negative">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Negative_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#Negative_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">protein alignment with negative values in matrix</rdfs:seeAlso>
-</Metadata>
-
-<Attribute rdf:about="#SeqNos">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasMetadata rdf:resource="#Seqnos_Description"/>
-</Attribute>
-
-<Metadata rdf:about="#Seqnos_Description">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <rdf:type rdf:resource="#Description"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OFF or ON (for Clustal output only)</rdfs:seeAlso>
-</Metadata>
-
-<Relation rdf:about="#Relation_in_ClustalW">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
-</Relation>
-
-<Relation rdf:about="#Relation_out_Clustalw">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#aligned_sequence"/>
-</Relation>
-
 <Abstract_activity rdf:about="#AA_Alignment">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdf:type rdf:resource="#Sequence_alignment_operation_0292"/>
@@ -773,6 +428,283 @@
   <hasOutputRelation rdf:resource="#Relation_out_Mafft"/>
   <hasOutputRelation rdf:resource="#Relation_out_Muscle"/>
 </Abstract_activity>
+
+<Relation rdf:about="#Relation_in_ClustalW">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <belongsTo rdf:resource="#ch_validation_alignment"/>
+  <composedBy rdf:resource="#Validated_sequence"/>
+</Relation>
+
+<Relation rdf:about="#Relation_in_Mafft">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <belongsTo rdf:resource="#ch_validation_alignment"/>
+  <composedBy rdf:resource="#Auto"/>
+  <composedBy rdf:resource="#Ep"/>
+  <composedBy rdf:resource="#GlobalPair"/>
+  <composedBy rdf:resource="#Op"/>
+  <composedBy rdf:resource="#Validated_sequence"/>
+  <composedBy rdf:resource="#6merpair"/>
+</Relation>
+
+<Relation rdf:about="#Relation_in_Muscle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <belongsTo rdf:resource="#ch_validation_alignment"/>
+  <composedBy rdf:resource="#Maxhours"/>
+  <composedBy rdf:resource="#Maxiter"/>
+  <composedBy rdf:resource="#OutFileName"/>
+  <composedBy rdf:resource="#Validated_sequence"/>
+</Relation>
+
+<Relation rdf:about="#Relation_out_Clustalw">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <composedBy rdf:resource="#aligned_sequence"/>
+</Relation>
+
+<Relation rdf:about="#Relation_out_Mafft">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <composedBy rdf:resource="#aligned_sequence"/>
+</Relation>
+
+<Relation rdf:about="#Relation_out_Muscle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <composedBy rdf:resource="#aligned_sequence"/>
+</Relation>
+
+<Channel rdf:about="#ch_validation_alignment">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Channel>
+
+<Attribute rdf:about="#Validated_sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#Auto">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#Ep">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#GlobalPair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#Op">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#6merpair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#Maxhours">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#Maxiter">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#OutFileName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#aligned_sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Abstract_activity rdf:about="#AA_Validation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Sequencing_quality_control"/>
+  <hasInputRelation rdf:resource="#Relation_in_Remove_Pipe"/>
+  <hasOutputRelation rdf:resource="#Relation_out_Remove_Pipe"/>
+</Abstract_activity>
+
+<Relation rdf:about="#Relation_in_Remove_Pipe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <composedBy rdf:resource="#Sequence_input"/>
+</Relation>
+
+<Relation rdf:about="#Relation_out_Remove_Pipe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <belongsTo rdf:resource="#ch_validation_alignment"/>
+  <composedBy rdf:resource="#Validated_sequence"/>
+</Relation>
+
+<Attribute rdf:about="#Sequence_input">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Program rdf:about="#ClustalW">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Program>
+
+<Description rdf:about="#Description_Clustalw">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clustalw: programa que alinha sequencias</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Description_Mafft">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">programa que alinha sequencias</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Description_Muscle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Muscle: programa que alinha sequencias</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Description_Remove_Pipe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">programa que valida a sequencia de entrada</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Description_Sequence_Input">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sequencia de alinhamento - arquivo de entrada</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Description_Validated_Sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sequencia de alinhamento validada</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Ep_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Offset value, which works like gap extension penalty, for group-to-group alignment. Default: 0.123</rdfs:seeAlso>
+</Description>
+
+<Attribute rdf:about="#Interactive">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Description rdf:about="#Interactive_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ead command line, then enter normal interactive menus</rdfs:seeAlso>
+</Description>
+
+<Program rdf:about="#Mafft">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Program>
+
+<Description rdf:about="#Mafft_Auto">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Automatically selects an appropriate strategy from L-INS-i, FFT-NS-i and FFT-NS-2, according to data size. Default: off (always FFT-NS-2)</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#MaxHour_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximim time. If h hours have elpased, then complete the current iteration and stop. Default no time limit.</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Maxiter_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum number of iterations to run. Default 16. Set to 2 for large datasets where refinement (iterations 3+) is too slow.</rdfs:seeAlso>
+</Description>
+
+<Program rdf:about="#Muscle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Program>
+
+<Attribute rdf:about="#Negative">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Description rdf:about="#Negative_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">protein alignment with negative values in matrix</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#Op_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gap opening penalty at group-to-group alignment. Default: 1.53</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#OutFileName_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output file, default format is aligned FASTA. </rdfs:seeAlso>
+</Description>
+
+<Attribute rdf:about="#QuickTree">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Description rdf:about="#QuickTree_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">use FAST algorithm for the alignment guide tree</rdfs:seeAlso>
+</Description>
+
+<Program rdf:about="#Remove_Pipe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Program>
+
+<Attribute rdf:about="#SeqNos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Description rdf:about="#Seqnos_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OFF or ON (for Clustal output only)</rdfs:seeAlso>
+</Description>
+
+<Metadata rdf:about="#Termo_de_Uso_Clustalw">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clustalw: termo de uso</rdfs:seeAlso>
+</Metadata>
+
+<Metadata rdf:about="#Termo_de_Uso_Mafft">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso do mafft</rdfs:seeAlso>
+</Metadata>
+
+<Metadata rdf:about="#Termo_de_Uso_Muscle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Muscle: termo de uso</rdfs:seeAlso>
+</Metadata>
+
+<Description rdf:about="#globalpair_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All pairwise alignments are computed with the Needleman-Wunsch algorithm. More accurate but slower than --6merpair. Suitable for a set of globally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (G-INS-i). Default: off (6mer distance is used)</rdfs:seeAlso>
+</Description>
+
+<Description rdf:about="#6merpair_Description">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Distance is calculated based on the number of shared 6mers. Default: on</rdfs:seeAlso>
+</Description>
+
+<Metadata rdf:about="#pastel">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
+</Metadata>
+
+<Metadata rdf:about="#new_name">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terms_of_use"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">termo de uso remove_pipe</rdfs:seeAlso>
+</Metadata>
 
 
 </rdf:RDF>
