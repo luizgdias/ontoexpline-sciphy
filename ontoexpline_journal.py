@@ -57,12 +57,12 @@ validator_program       =   create_program(ontoexpline, 'Remove_Pipe', sequencin
 
 # create_metadata(ontologia, artefato , nome_do_metadado, tipo_do_metadado, descrição):
 # criando metadados e relacionando a individuos do tipo Program:
-metadata    =   create_metadata(ontoexpline, validator_program , description, 'Description_Remove_Pipe', 'programa que valida a sequencia de entrada') 
-metadata2   =   create_metadata(ontoexpline, validator_program , terms_of_use, 'Termo_De_Uso', 'termo de uso remove_pipe') 
+metadata    =   create_metadata(ontoexpline, validator_program , description, 'Description_Remove_Pipe') 
+metadata2   =   create_metadata(ontoexpline, validator_program , terms_of_use, 'Termo_De_Uso') 
 
 # criando individuo do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
-sequence_input  =   create_attribute(ontoexpline, 'Sequence_input')
-metadata3   =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input', 'sequencia de alinhamento - arquivo de entrada') 
+sequence_input  =   create_port(ontoexpline, 'Sequence_input')
+metadata3   =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input') 
 
 # criando individuo do tipo relação de entrada | associando atributos a relação
 in_relation1    =   create_relation(ontoexpline, 'Relation_in_Remove_Pipe')
@@ -70,7 +70,7 @@ associate_relation_to_attributes(ontoexpline, in_relation1, [sequence_input])
 
 # criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
 validated_sequence   =   create_attribute(ontoexpline, 'Validated_sequence')
-metadata4            =   create_metadata(ontoexpline, validated_sequence , description, 'Description_Validated_Sequence', 'sequencia de alinhamento validada')
+metadata4            =   create_metadata(ontoexpline, validated_sequence , description, 'Description_Validated_Sequence')
 
 # criando individuo do tipo relação de entrada | associando atributos a relação
 out_relation_remove_pipe   =   create_relation(ontoexpline, 'Relation_out_Remove_Pipe')
@@ -88,8 +88,8 @@ aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality
 mafft       =   create_program(ontoexpline, 'Mafft', sequence_alignment)
 
 # criando metadados e relacionando a individuos do tipo Program:
-metadata    =   create_metadata(ontoexpline, mafft , description, 'Description_Mafft', 'programa que alinha sequencias') 
-metadata2   =   create_metadata(ontoexpline, mafft , terms_of_use, 'Termo_de_Uso_Mafft', 'termo de uso do mafft') 
+metadata    =   create_metadata(ontoexpline, mafft , description, 'Description_Mafft') 
+metadata2   =   create_metadata(ontoexpline, mafft , terms_of_use, 'Termo_de_Uso_Mafft') 
 
 # criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o ao atributo criado
 # deve existir um atributo para cada porta createport(associar porta com programa, associar porta com atributo)

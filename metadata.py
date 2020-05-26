@@ -15,7 +15,7 @@ def create_metadata_type(ontoexpline, metadata_name, metadata_description):
     return(NewClass)
 
 
-def create_metadata(ontoexpline, artefact , metadata_type, metadata_name, metadata_description): 
+def create_metadata(ontoexpline, artefact , metadata_type, metadata_name): 
     """[função que cria instancias de metadado do tipo criado por create_metadata_type]
 
     Arguments:

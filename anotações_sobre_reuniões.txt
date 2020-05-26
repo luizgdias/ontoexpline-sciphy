@@ -107,13 +107,15 @@ reuniao do dia 19/05
     
 
 --------------------- Resumo da reunião do dia 21/05/2010 ---------------------
-1. criar função de update de entidades - done
-2. criar uma função de delete - done
-3. criar uma funçao para adicionar anotações de entidades - done
-4. definir o tipo da relação quando associa-la a atividade [in], [out] - done
-5. na função de associar atributos a relação, retirar o tipo in ou out - done
-6. criar um metodo para definição de portas
+1. criar função de update de entidades - feito
+2. criar uma função de delete - feito
+3. criar uma funçao para adicionar anotações de entidades - feito
+4. definir o tipo da relação quando associa-la a atividade [in], [out] - feito
+5. na função de associar atributos a relação, retirar o tipo in ou out - feito
+6. criar um metodo para definição de portas - feito
 7. associar cada porta a um atributo abstrato - obs: no modelo as classes nao se relacionam
-8. verificar se a entidade existente antes de inserir
+8. verificar se a entidade existente antes de inserir - testando alguns métodos de checagem
+9. atividades abstratas so consomem e geram uma relação - to do
+10. definir módulos pré-definidos de metadados
 
 Perguntas: in_port usedBy program... out_port generatedBy program

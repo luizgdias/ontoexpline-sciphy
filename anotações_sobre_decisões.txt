@@ -1,0 +1,28 @@
+O fluxo de utilização da API é executado de acordo com as dependências das entidades definidas na especificação do workflow. Dessa forma, a especificação é definida em
+dois passos principais: Definição estrutural, e definição e relacionamento de entidades.
+
+O primeiro passo é dividido em duas partes, a primeira relacionda ao nível de abstração do experimento, e a segunda, relacionda a definição estrutural de metadados.
+Na primeira etapa, é especificada a definição das operações de domínio a serem utilizadas na definição do nível de abstração do experimento. Dessa forma é necessário definir
+quais os tipos de operações serão especificadas na definição abstrata do workflow de acordo com uma ontologia de domínio previamente adicionada na ontoexpline.
+Dessa forma, o primeiro passo é realizado com a utilização da função define_domain_operation(p1, p2, p3). Essa função recebe como parametros a ontoexpline, 
+o domínio a ser utilizado, e a operação de domínio pertencente ao domínio. Tal função verifica a existencia da operação naquele domínio, e caso seja válida 
+a torna apta a utilização na especificação do workflow.
+A segunda etapa é voltada a definição de tipos de metadados a serem agregados às entidades ontoexpline. Tal etapa é importante visto a vasta possibilidade de agregar informações 
+a determinados tipos de entidades. Para essa instanciação é necessário utilizar a função create_metadata_type(p1,p2, p3). A função de definição de tipos de metadados
+recebe como parametros a ontoexpline, um identificador para o tipo que esta sendo definido, e sua descrição, que é adicionada em forma de anotações. 
+De forma análoga a definição de metadados, a definição de anotações sobre entidades pode ser feita de forma universal, por meio da função insert_annotation(p1, p2, p3)
+que recebe como parametros a ontologia, a entidade que receberá a anotação, e o conteúdo a ser adicionado como anotação.
+
+O segundo passo relativo a definição e relacionamento de entidades, diz respeito a especificação de itens concretos e abstratos do workflow. Nesse passo as entidades
+são definidas de forma paralela, ou seja, itens concretos e abstratos podem ser definidos concomitantemente, dessa forma, questões de dependencias são verificadas
+buscando manter a coerência da especificação. A primeira operação a ser realizada é a definição de programas aplicados as atividades. Dessa forma, deve-se utilizar
+a função create_program(p1, p2, p3). Tal função recebe alem da ontologia, um identificador unido do programa, bem como sua classificação relativa a operações de domínio
+definida no passo anterior. Dessa forma os programas devem necessariamente ser tipados de acordo com uma operação de domínio válida. Após a definição da instância,
+são definidos seus atributos concretos relacionados aos itens de dado produzidos por ele. Os atributos concretos são definidos como elementos provONE:Port e são
+diretamente relacionados com elementos do tipo provONE:Program. Paralelo a isso são definidos também atributos abstratos classificados como ExpLine.Attribute
+***PRECISA MELHORAR A EXPLICAÇÃO DA RELAÇÃO DE ATRIBUTOS CONCRETOS E ABSTRATOS***
+
+A próxima etapa deste passo é definir relações abstratas compostas por atributos abstratos, bem como associa-las. Para isso são utilizadas duas funções principais:
+a primeira create_relation(p1, p2), recebe a ontoexpline e um identificador de entidade. De forma análoga aos demais indivíduos, é verificado se a porta sendo 
+criada, existe na estrutura, caso exista, não é inserida. A segunda etapa é executada pela função associate_relation_to_attributes(p1, p2, list(p3)).
+A função de associação recebe como parametro a ontoexpline, o objeto do tipo ExpLine.Relation criado previamente, e uma lista de atributos que a compõem.
