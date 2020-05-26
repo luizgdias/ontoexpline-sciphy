@@ -3,12 +3,11 @@ def create_relation(ontoexpline, relation_name):
     return(relation)
     
 
-def associate_relation_to_attributes(ontoexpline, relation, relation_type, attributes):
-    print(relation)
-    if(relation_type == 'input'):
+def associate_relation_to_attributes(ontoexpline, relation, attributes):
+    # print(relation)
+    if(relation):
         for att in attributes:
             relation.composedBy.append(att)
+    else:
+        print("Relation.py -> Relação não existe")
     
-    if(relation_type == 'output'):
-        for att in attributes:
-            relation.composedBy.append(att)

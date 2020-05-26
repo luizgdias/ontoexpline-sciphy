@@ -10,7 +10,7 @@
 def create_program(ontoexpline, program, domain_type):
     new_program = ontoexpline.Program(program)
     # new_program.is_a.append(domain_type)
-    print('****', domain_type)
+    # print('****', domain_type)
     # create_ports(ontoexpline, new_program)
     ontoexpline.save(file = "ontologies/ontoexpline.owl", format = "rdfxml")
     return new_program

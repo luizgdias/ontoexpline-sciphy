@@ -104,3 +104,16 @@ reuniao do dia 19/05
     Essa verificação deve ser feita no momento de criar a relação
     *aguardando aprovação
     setdependence() entre atributos
+    
+
+--------------------- Resumo da reunião do dia 21/05/2010 ---------------------
+1. criar função de update de entidades - done
+2. criar uma função de delete - done
+3. criar uma funçao para adicionar anotações de entidades - done
+4. definir o tipo da relação quando associa-la a atividade [in], [out] - done
+5. na função de associar atributos a relação, retirar o tipo in ou out - done
+6. criar um metodo para definição de portas
+7. associar cada porta a um atributo abstrato - obs: no modelo as classes nao se relacionam
+8. verificar se a entidade existente antes de inserir
+
+Perguntas: in_port usedBy program... out_port generatedBy program

@@ -286,6 +286,23 @@
 
 <owl:Class rdf:about="#ProvOne"/>
 
+<owl:Class rdf:about="#Abstract_activity">
+  <rdfs:subClassOf rdf:resource="#Experiment_Line"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasMetadata"/>
+      <owl:someValuesFrom rdf:resource="#Metadata"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:seeAlso>belongsTo</rdfs:seeAlso>
+  <rdfs:seeAlso>hasMetadata</rdfs:seeAlso>
+  <rdfs:seeAlso>hasRelation</rdfs:seeAlso>
+  <rdfs:seeAlso>hasType</rdfs:seeAlso>
+  <rdfs:seeAlso>use</rdfs:seeAlso>
+</owl:Class>
+
+<owl:Class rdf:about="#Metadata"/>
+
 <owl:Class rdf:about="#Channel">
   <rdfs:subClassOf rdf:resource="#Entity"/>
   <rdfs:comment>Encapsulates experiment line relations and connects abstract activities.</rdfs:comment>
@@ -301,26 +318,9 @@
   <rdfs:comment>A Document represents a body of information produced as a result of an Execution.</rdfs:comment>
 </owl:Class>
 
-<owl:Class rdf:about="#Metadata"/>
-
 <owl:Class rdf:about="#Visualization">
   <rdfs:subClassOf rdf:resource="#Entity"/>
   <rdfs:comment>A Visualization item represents a unit of information consumed or produced by a Program, in the form of a digital visual representation.</rdfs:comment>
-</owl:Class>
-
-<owl:Class rdf:about="#Abstract_activity">
-  <rdfs:subClassOf rdf:resource="#Experiment_Line"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#hasMetadata"/>
-      <owl:someValuesFrom rdf:resource="#Metadata"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:seeAlso>belongsTo</rdfs:seeAlso>
-  <rdfs:seeAlso>hasMetadata</rdfs:seeAlso>
-  <rdfs:seeAlso>hasRelation</rdfs:seeAlso>
-  <rdfs:seeAlso>hasType</rdfs:seeAlso>
-  <rdfs:seeAlso>use</rdfs:seeAlso>
 </owl:Class>
 
 <owl:Class rdf:about="#Activity_Domain_Type">
@@ -344,6 +344,7 @@
 <owl:Class rdf:about="#Configuration_Parameter">
   <rdfs:subClassOf rdf:resource="#Metadata"/>
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Possiveis valores de atruibutos de configuração</rdfs:seeAlso>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new annotation for entity</rdfs:seeAlso>
 </owl:Class>
 
 <owl:Class rdf:about="#Description">
@@ -390,6 +391,11 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Terms of use of artefact</rdfs:seeAlso>
 </owl:Class>
 
+<owl:Class rdf:about="#Uri">
+  <rdfs:subClassOf rdf:resource="#Metadata"/>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource identifier</rdfs:seeAlso>
+</owl:Class>
+
 <owl:Class rdf:about="#Url">
   <rdfs:subClassOf rdf:resource="#Metadata"/>
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource locator</rdfs:seeAlso>
@@ -413,16 +419,6 @@
   <rdfs:subClassOf rdf:resource="#Bio"/>
 </owl:Class>
 
-<owl:Class rdf:about="#Uri2">
-  <rdfs:subClassOf rdf:resource="#Metadata"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource identifier</rdfs:seeAlso>
-</owl:Class>
-
-<owl:Class rdf:about="#Uri">
-  <rdfs:subClassOf rdf:resource="#Metadata"/>
-  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uniform resource identifier</rdfs:seeAlso>
-</owl:Class>
-
 <Abstract_activity rdf:about="#AA_Alignment">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdf:type rdf:resource="#Sequence_alignment_operation_0292"/>
@@ -437,87 +433,33 @@
 <Relation rdf:about="#Relation_in_ClustalW">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
 </Relation>
 
 <Relation rdf:about="#Relation_in_Mafft">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Auto"/>
-  <composedBy rdf:resource="#Ep"/>
-  <composedBy rdf:resource="#GlobalPair"/>
-  <composedBy rdf:resource="#Op"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
-  <composedBy rdf:resource="#6merpair"/>
 </Relation>
 
 <Relation rdf:about="#Relation_in_Muscle">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <belongsTo rdf:resource="#ch_validation_alignment"/>
-  <composedBy rdf:resource="#Maxhours"/>
-  <composedBy rdf:resource="#Maxiter"/>
-  <composedBy rdf:resource="#OutFileName"/>
-  <composedBy rdf:resource="#Validated_sequence"/>
 </Relation>
 
 <Relation rdf:about="#Relation_out_Clustalw">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#aligned_sequence"/>
 </Relation>
 
 <Relation rdf:about="#Relation_out_Mafft">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#aligned_sequence"/>
 </Relation>
 
 <Relation rdf:about="#Relation_out_Muscle">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <composedBy rdf:resource="#aligned_sequence"/>
 </Relation>
 
 <Channel rdf:about="#ch_validation_alignment">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
 </Channel>
-
-<Attribute rdf:about="#Validated_sequence">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#Auto">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#Ep">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#GlobalPair">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#Op">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#6merpair">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#Maxhours">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#Maxiter">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#OutFileName">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
-<Attribute rdf:about="#aligned_sequence">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
 
 <Abstract_activity rdf:about="#AA_Validation">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -538,6 +480,10 @@
 </Relation>
 
 <Attribute rdf:about="#Sequence_input">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#Validated_sequence">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
 </Attribute>
 
@@ -587,10 +533,6 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Offset value, which works like gap extension penalty, for group-to-group alignment. Default: 0.123</rdfs:seeAlso>
 </Description>
 
-<Attribute rdf:about="#Interactive">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
 <Description rdf:about="#Interactive_Description">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdf:type rdf:resource="#Metadata"/>
@@ -599,7 +541,27 @@
 
 <Program rdf:about="#Mafft">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasInPort rdf:resource="#_6merpair"/>
+  <hasInPort rdf:resource="#op"/>
+  <hasInPort rdf:resource="#global_pair"/>
+  <hasOutPort rdf:resource="#aligned_sequence"/>
 </Program>
+
+<Port rdf:about="#_6merpair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#op">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#global_pair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#aligned_sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
 
 <Description rdf:about="#Mafft_Auto">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -623,10 +585,6 @@
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
 </Program>
 
-<Attribute rdf:about="#Negative">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
 <Description rdf:about="#Negative_Description">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdf:type rdf:resource="#Metadata"/>
@@ -645,10 +603,6 @@
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output file, default format is aligned FASTA. </rdfs:seeAlso>
 </Description>
 
-<Attribute rdf:about="#QuickTree">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
-
 <Description rdf:about="#QuickTree_Description">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdf:type rdf:resource="#Metadata"/>
@@ -658,10 +612,6 @@
 <Program rdf:about="#Remove_Pipe">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
 </Program>
-
-<Attribute rdf:about="#SeqNos">
-  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-</Attribute>
 
 <Description rdf:about="#Seqnos_Description">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -716,6 +666,22 @@
   <rdf:type rdf:resource="#Metadata"/>
   <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Distance is calculated based on the number of shared 6mers. Default: on</rdfs:seeAlso>
 </Description>
+
+<Attribute rdf:about="#abs_att__6merpair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_global_pair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_op">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_aligned_sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Attribute>
 
 
 </rdf:RDF>

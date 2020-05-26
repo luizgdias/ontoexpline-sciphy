@@ -21,13 +21,14 @@ def create_abstract_activity(ontoexpline, aa_name, aa_domain_type, input_relatio
     """   
     # print(ontoexpline.search(subclass_of = ontoexpline.Activity_Domain_Type))
     # print(aa_domain_type)
-
     aa = ontoexpline.Abstract_activity(aa_name)
     aa.is_a.append(aa_domain_type)
     aa.hasInputRelation    = input_relation
     aa.hasOutputRelation   = output_relation
     if optional == True:
         aa.is_a.append(ontoexpline.Optional)
+        
+    return(True)
 
 
 # codigo antigo:

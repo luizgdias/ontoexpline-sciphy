@@ -18,3 +18,12 @@ def delete_entity(ontoexpline, entity):
         verify = False
     return(verify)
 
+def insert_annotation(ontoexpline, entity, new_annotation):
+    verify = None
+    if(entity):
+        entity.seeAlso.append(new_annotation)
+        verify = True
+    else:
+        print(entity, ' => entidade não existe existe')
+        verify = False
+    return(verify)

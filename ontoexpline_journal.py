@@ -5,10 +5,10 @@ from metadata import create_metadata_type
 from metadata import create_metadata, rename_entity
 from program import create_program
 from relation import create_relation, associate_relation_to_attributes
-import program
 from abstract_activity import create_abstract_activity
 from channel import create_channel
-from basic_structural_operations import refactor_entity, delete_entity
+from basic_structural_operations import refactor_entity, delete_entity, insert_annotation
+from port import create_port, associate_port_to_program
 
 from owlready2 import *
 import types
@@ -41,63 +41,79 @@ description             =  create_metadata_type(ontoexpline, 'Description', 'Des
 terms_of_use            =  create_metadata_type(ontoexpline, 'Terms_of_use', 'Terms of use of artefact')
 configuration_parameter =  create_metadata_type(ontoexpline, 'Configuration_Parameter', 'Possiveis valores de atruibutos de configuração')
 
+# ----------------------- Funções estruturais basicas: ----------------------
 uri3 = ontoexpline.Teste
-uri = refactor_entity(ontoexpline, uri, 'Uri2')
-delete = delete_entity(ontoexpline, uri3)
-print(delete)
-# uri = refactor_entity(ontoexpline, uri2, 'Uri')
+# uri = refactor_entity(ontoexpline, uri, 'Uri2')
+# delete = delete_entity(ontoexpline, uri3)
+# print(delete)
+insert = insert_annotation(ontoexpline, configuration_parameter, 'new annotation for entity')
+# ----------------------------------------------------------------------------
 
+# -------------------------------------------------------------------------------------------------------------------------------------------
+#                                                   Itens da Primeira Atividade Abstrata
+# -------------------------------------------------------------------------------------------------------------------------------------------
+# criando programa
+validator_program       =   create_program(ontoexpline, 'Remove_Pipe', sequencing_quality_control)
 
-# # -------------------------------------------------------------------------------------------------------------------------------------------
-# #                                                   Itens da Primeira Atividade Abstrata
-# # -------------------------------------------------------------------------------------------------------------------------------------------
-# # criando programa
-# validator_program       =   create_program(ontoexpline, 'Remove_Pipe', sequencing_quality_control)
+# create_metadata(ontologia, artefato , nome_do_metadado, tipo_do_metadado, descrição):
+# criando metadados e relacionando a individuos do tipo Program:
+metadata    =   create_metadata(ontoexpline, validator_program , description, 'Description_Remove_Pipe', 'programa que valida a sequencia de entrada') 
+metadata2   =   create_metadata(ontoexpline, validator_program , terms_of_use, 'Termo_De_Uso', 'termo de uso remove_pipe') 
 
-# # create_metadata(ontologia, artefato , nome_do_metadado, tipo_do_metadado, descrição):
-# # criando metadados e relacionando a individuos do tipo Program:
-# metadata    =   create_metadata(ontoexpline, validator_program , description, 'Description_Remove_Pipe', 'programa que valida a sequencia de entrada') 
-# metadata2   =   create_metadata(ontoexpline, validator_program , terms_of_use, 'Termo_De_Uso', 'termo de uso remove_pipe') 
+# criando individuo do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
+sequence_input  =   create_attribute(ontoexpline, 'Sequence_input')
+metadata3   =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input', 'sequencia de alinhamento - arquivo de entrada') 
 
-# # criando individuo do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
-# sequence_input  =   create_attribute(ontoexpline, 'Sequence_input')
-# metadata3   =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input', 'sequencia de alinhamento - arquivo de entrada') 
-# # criar um metodo update anotation para atualizar as anotações do individuo**********
-# # verificar se o individuo existente antes de inserir
+# criando individuo do tipo relação de entrada | associando atributos a relação
+in_relation1    =   create_relation(ontoexpline, 'Relation_in_Remove_Pipe')
+associate_relation_to_attributes(ontoexpline, in_relation1, [sequence_input])
 
-# # criando individuo do tipo relação de entrada | associando atributos a relação
-# in_relation1    =   create_relation(ontoexpline, 'Relation_in_Remove_Pipe')
-# # setar se relação é de entrada e saida na hora de associar a atividade
-# # retirar o input dessa função
-# associate_relation_to_attributes(ontoexpline, in_relation1, 'input', [sequence_input])
+# criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
+validated_sequence   =   create_attribute(ontoexpline, 'Validated_sequence')
+metadata4            =   create_metadata(ontoexpline, validated_sequence , description, 'Description_Validated_Sequence', 'sequencia de alinhamento validada')
 
-# # criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
-# validated_sequence   =   create_attribute(ontoexpline, 'Validated_sequence')
-# metadata4            =   create_metadata(ontoexpline, validated_sequence , description, 'Description_Validated_Sequence', 'sequencia de alinhamento validada')
+# criando individuo do tipo relação de entrada | associando atributos a relação
+out_relation_remove_pipe   =   create_relation(ontoexpline, 'Relation_out_Remove_Pipe')
+associate_relation_to_attributes(ontoexpline, out_relation_remove_pipe, [validated_sequence])
 
-# # criando individuo do tipo relação de entrada | associando atributos a relação
-# out_relation_remove_pipe   =   create_relation(ontoexpline, 'Relation_out_Remove_Pipe')
-# associate_relation_to_attributes(ontoexpline, out_relation_remove_pipe, 'output', [validated_sequence])
-
-# # criando atividade abstrata : create_abstract_activity(ontologia, 'nome da atividade', relação de entrada, relação de saida, opcionalidade)
-# # aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality_control,  [in_relation1], [out_relation_remove_pipe], False)
+# criando atividade abstrata : create_abstract_activity(ontologia, 'nome da atividade', relação de entrada, relação de saida, opcionalidade)
+aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality_control,  [in_relation1], [out_relation_remove_pipe], False)
 # # -------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # # -------------------------------------------------------------------------------------------------------------------------------------------
 # #                                                   Itens da Segunda Atividade Abstrata
 # # -------------------------------------------------------------------------------------------------------------------------------------------
-# # criando programa
-# mafft       =   create_program(ontoexpline, 'Mafft', sequence_alignment)
+# criando programa
+mafft       =   create_program(ontoexpline, 'Mafft', sequence_alignment)
 
-# # criando metadados e relacionando a individuos do tipo Program:
-# metadata    =   create_metadata(ontoexpline, mafft , description, 'Description_Mafft', 'programa que alinha sequencias') 
-# metadata2   =   create_metadata(ontoexpline, mafft , terms_of_use, 'Termo_de_Uso_Mafft', 'termo de uso do mafft') 
+# criando metadados e relacionando a individuos do tipo Program:
+metadata    =   create_metadata(ontoexpline, mafft , description, 'Description_Mafft', 'programa que alinha sequencias') 
+metadata2   =   create_metadata(ontoexpline, mafft , terms_of_use, 'Termo_de_Uso_Mafft', 'termo de uso do mafft') 
 
-# # criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o ao atributo criado
-# # deve existir um atributo para cada porta createport(associar porta com programa, associar porta com atributo)
-# # da pra associar atributos diferentes a mesma porta
-# #criar metodo pra criar porta, criar metodo para associar o atributo a uma porta
+# criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o ao atributo criado
+# deve existir um atributo para cada porta createport(associar porta com programa, associar porta com atributo)
+# da pra associar atributos diferentes a mesma porta
+#criar metodo pra criar porta, criar metodo para associar o atributo a uma porta
+
+# criando portas de entrada
+_6merpair       =   create_port(ontoexpline, '_6merpair')
+global_pair     =   create_port(ontoexpline, 'global_pair')
+op              =   create_port(ontoexpline, 'op')
+# criando portas de saida
+aligned_sequence =   create_port(ontoexpline, 'aligned_sequence')
+
+#associando portas de entrada e saida ao programa
+associate_port_to_program(ontoexpline, mafft, [_6merpair, global_pair, op], [aligned_sequence])
+
+
+# criando atributos abstratos de entrada
+abs_att_6merpair        =   create_attribute(ontoexpline, 'abs_att__6merpair')
+abs_att_global_pair     =   create_attribute(ontoexpline, 'abs_att_global_pair')
+abs_att_op              =   create_attribute(ontoexpline, 'abs_att_op')
+# criando atributos abstratos de saida
+abs_att_aligned_sequence = create_attribute(ontoexpline, 'abs_att_aligned_sequence')
+
 # auto                        =   create_attribute(ontoexpline, 'Auto')
 # auto_description            =   create_metadata(ontoexpline, auto , description, 'Mafft_Auto', 'Automatically selects an appropriate strategy from L-INS-i, FFT-NS-i and FFT-NS-2, according to data size. Default: off (always FFT-NS-2)' ) 
 # _6merpair                   =   create_attribute(ontoexpline, '6merpair')
@@ -112,7 +128,7 @@ print(delete)
 # # criando individuo do tipo relação de entrada | associando atributos a relação
 # # portas na provone relacionando aos atributos abstratos 
 # in_relation_mafft    =   create_relation(ontoexpline, 'Relation_in_Mafft')
-# associate_relation_to_attributes(ontoexpline, in_relation_mafft, 'input', [validated_sequence, auto, _6merpair, global_pair, op, ep])
+# associate_relation_to_attributes(ontoexpline, in_relation_mafft, [validated_sequence, auto, _6merpair, global_pair, op, ep])
 
 
 # #  criando atributo gerado
