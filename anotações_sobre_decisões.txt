@@ -1,3 +1,5 @@
+Com base nisso, uma ontologia contendo operações do domínio da biologia foi importada no ramo ontoexpline:domain, e 
+
 O fluxo de utilização da API é executado de acordo com as dependências das entidades definidas na especificação do workflow. Dessa forma, a especificação é definida em
 dois passos principais: Definição estrutural, e definição e relacionamento de entidades.
 
@@ -26,3 +28,24 @@ A próxima etapa deste passo é definir relações abstratas compostas por atrib
 a primeira create_relation(p1, p2), recebe a ontoexpline e um identificador de entidade. De forma análoga aos demais indivíduos, é verificado se a porta sendo 
 criada, existe na estrutura, caso exista, não é inserida. A segunda etapa é executada pela função associate_relation_to_attributes(p1, p2, list(p3)).
 A função de associação recebe como parametro a ontoexpline, o objeto do tipo ExpLine.Relation criado previamente, e uma lista de atributos que a compõem.
+
+--------------------------------------------------------------Texto para o overleaf-------------------------------------------------------------------------------------
+O processo de avaliação da ontologia foi feito mapeando um workflow filogenômico, instanciando componentes e relacionando-os de acordo com classes e propriedades definidas
+na ontologia. Foi utilizada a linguagem python3.6 e aplicada a API OwlReady2. O primeiro passo que antecede o processo de instanciação e relacionamentos de indivíduos, é
+o processo de especialização da OntoExpLine visto o seu perfil multi-domínio e flexibilidade na definição do nível de abstração das atividades executadas pelo workflow. 
+O Segundo passo por sua vez, é relativo a especificação dos componentes do workflow que servirá de base para gerar as derivações. O fluxo de atividades envolvida nesses 
+dois passos são exibidos na Figura X.
+
+No processo de especialização da ontoexpline, são definidas as operações executadas pelo workflow em com base em definições específicas do contexto do workflow. 
+Dessa forma, a partir de um conjunto de entidades importadas de uma ontologia de domínio, é possível identificar e especificar as operações relevantes no âmbito do experimento a ser executado.
+A instanciação das operações a serem executadas é necessária visto a possibilidade de aumentar ou diminuir o nível de granularidade por parte de cada atividade, 
+visto que macroatividades são compostas por microatividades, e dependendo do conjunto dos dados necessários para análise, se faz necessário definir operações de nível
+específico. Dessa forma, o primeiro passo da especificação da OntoExpLine pode ser entendida como instânciação da métrica aplicada relativa ao nível de abstração a ser empregado.
+
+O próximo passo da etapa de especificação é relacionado à definição do conjunto de metadados que serão utilizados para agregar informações aos componentes do workflow. A partir
+disso percebe-se que além da flexibilidade relacionada ao nível de abstração e independencia de domínio, a OntoExpLine possibilita que o cientista defina quais tipos de 
+metadados serão agregados aos elementos, fazendo com que todos os elementos estruturais definidos neste ramo sejam de fato aplicados, tornando o ramo compacto e funcional.
+
+A terceira operação de especialização é sobre a definição dos perfis dos programas a serem especificados. Tal operação é necessária pois além de classificar programas, é utilizada 
+para agregar metadados específicos a determinados programas como serviços executados em nuvem, ou programas de código aberto/proprietários. A tipagem definida neste passo, é
+utilizada pela última atividade de especificação, onde são definidos módulos de metadados genéricos e específicos de acordo com o tipo de programa definido pelo usuário.

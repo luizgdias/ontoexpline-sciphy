@@ -7,3 +7,6 @@ def create_attribute(ontoexpline, att_name):
     """   
     att = ontoexpline.Attribute(att_name)
     return(att)
+
+def associate_att_to_port(ontoexpline, att, port):
+    att.wasAssociatedWith.append(port)

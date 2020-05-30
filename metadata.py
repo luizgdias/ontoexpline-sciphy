@@ -25,7 +25,7 @@ def create_metadata(ontoexpline, artefact , metadata_type, metadata_name):
         metadata_name {[string]} -- [metadado a ser agregado pela relação hasMetadata: artefact hasMetadata metadata_name]
     """  
     metadata = ontoexpline.Metadata(metadata_name)
-    metadata.seeAlso.append(metadata_description)
+    # metadata.seeAlso.append(metadata_description)
     metadata.is_a.append(metadata_type)
     metadata.is_a.append(metadata_type)
     print(metadata)

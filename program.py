@@ -7,7 +7,7 @@
 # não é cadastrado
 ################################################################################################ 
 
-def create_program(ontoexpline, program, domain_type):
+def create_program(ontoexpline, program, domain_type, input_ports, output_ports):
     new_program = ontoexpline.Program(program)
     # new_program.is_a.append(domain_type)
     # print('****', domain_type)

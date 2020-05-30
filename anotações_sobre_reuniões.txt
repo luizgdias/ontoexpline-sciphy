@@ -119,3 +119,12 @@ reuniao do dia 19/05
 10. definir módulos pré-definidos de metadados
 
 Perguntas: in_port usedBy program... out_port generatedBy program
+
+--------------------- Resumo da reunião do dia 25/05/2010 ---------------------
+1. Associar portas aos programas durante a criação do programa passando lista de portas de input e lista de portas de output
+2. Criar relacionamento direto entre atributos abstratos e portas
+    * criar primeiro os atributos de entrada e saida
+    * criar relações
+    * criar portas
+    * criar programas associando-os as portas
+    * criar atividade abstrata

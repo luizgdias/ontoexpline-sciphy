@@ -1,10 +1,10 @@
 from domain_operation import define_domain_operation, list_operations
-from attribute import create_attribute
+from attribute import create_attribute, associate_att_to_port
 from relation import create_relation
 from metadata import create_metadata_type
 from metadata import create_metadata, rename_entity
 from program import create_program
-from relation import create_relation, associate_relation_to_attributes
+from relation import create_relation, associate_attriute_to_relation
 from abstract_activity import create_abstract_activity
 from channel import create_channel
 from basic_structural_operations import refactor_entity, delete_entity, insert_annotation
@@ -52,91 +52,79 @@ insert = insert_annotation(ontoexpline, configuration_parameter, 'new annotation
 # -------------------------------------------------------------------------------------------------------------------------------------------
 #                                                   Itens da Primeira Atividade Abstrata
 # -------------------------------------------------------------------------------------------------------------------------------------------
-# criando programa
-validator_program       =   create_program(ontoexpline, 'Remove_Pipe', sequencing_quality_control)
+# 1 - Definindo atributos abstratos
+abs_att_sequence_input      = create_attribute(ontoexpline, 'abs_att_sequence_input')
+abs_att_validated_sequence  = create_attribute(ontoexpline, 'abs_att_validated_sequence')
 
-# create_metadata(ontologia, artefato , nome_do_metadado, tipo_do_metadado, descrição):
+# 2 - Definindo individuo do tipo Port | criando individuo do tipo metadata e atribuindo-o a um attribute
+sequence_input  =   create_port(ontoexpline, 'Sequence_input')
+metadata3       =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input') 
+
+# Criando individuos do tipo Port | criando individuo do tipo metadata e atribuindo-o a um attribute
+validated_sequence   =   create_port(ontoexpline, 'Validated_sequence')
+metadata4            =   create_metadata(ontoexpline, validated_sequence , description, 'Description_Validated_Sequence')
+
+# 3 - Associando atributos (abstratos) a portas (concretas)
+associate_att_to_port(ontoexpline, abs_att_sequence_input, sequence_input)
+associate_att_to_port(ontoexpline, abs_att_validated_sequence, validated_sequence)
+
+# 4 - Definindo programa
+validator_program       =   create_program(ontoexpline, 'Remove_Pipe', sequencing_quality_control, [sequence_input], [validated_sequence])
+
 # criando metadados e relacionando a individuos do tipo Program:
 metadata    =   create_metadata(ontoexpline, validator_program , description, 'Description_Remove_Pipe') 
 metadata2   =   create_metadata(ontoexpline, validator_program , terms_of_use, 'Termo_De_Uso') 
 
-# criando individuo do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
-sequence_input  =   create_port(ontoexpline, 'Sequence_input')
-metadata3   =   create_metadata(ontoexpline, sequence_input , description, 'Description_Sequence_Input') 
+# 5 - Definindo individuo do tipo relação de entrada | associando atributos a relação
+in_relation_aa_validation    =   create_relation(ontoexpline, 'In_relation_aa_validation')
+out_relation_aa_validation   =   create_relation(ontoexpline, 'Out_relation_aa_validation')
 
-# criando individuo do tipo relação de entrada | associando atributos a relação
-in_relation1    =   create_relation(ontoexpline, 'Relation_in_Remove_Pipe')
-associate_relation_to_attributes(ontoexpline, in_relation1, [sequence_input])
+# 6 - Associando atributos a relações
+associate_attriute_to_relation(ontoexpline, in_relation_aa_validation, [sequence_input])
+associate_attriute_to_relation(ontoexpline, out_relation_aa_validation, [validated_sequence])
 
-# criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o a um attribute
-validated_sequence   =   create_attribute(ontoexpline, 'Validated_sequence')
-metadata4            =   create_metadata(ontoexpline, validated_sequence , description, 'Description_Validated_Sequence')
-
-# criando individuo do tipo relação de entrada | associando atributos a relação
-out_relation_remove_pipe   =   create_relation(ontoexpline, 'Relation_out_Remove_Pipe')
-associate_relation_to_attributes(ontoexpline, out_relation_remove_pipe, [validated_sequence])
-
-# criando atividade abstrata : create_abstract_activity(ontologia, 'nome da atividade', relação de entrada, relação de saida, opcionalidade)
-aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality_control,  [in_relation1], [out_relation_remove_pipe], False)
+# 7 - Definindo atividade abstrata : create_abstract_activity(ontologia, 'nome da atividade', relação de entrada, relação de saida, opcionalidade)
+aa_1 = create_abstract_activity(ontoexpline, 'AA_Validation', sequencing_quality_control,  [in_relation_aa_validation], [out_relation_aa_validation], False)
 # # -------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # # -------------------------------------------------------------------------------------------------------------------------------------------
 # #                                                   Itens da Segunda Atividade Abstrata
 # # -------------------------------------------------------------------------------------------------------------------------------------------
-# criando programa
-mafft       =   create_program(ontoexpline, 'Mafft', sequence_alignment)
+# 1 - Definindo atributos abstratos
+abs_att_6merpair            =   create_attribute(ontoexpline, 'abs_att__6merpair')
+abs_att_global_pair         =   create_attribute(ontoexpline, 'abs_att_global_pair')
+abs_att_op                  =   create_attribute(ontoexpline, 'abs_att_op')
+abs_att_aligned_sequence    =   create_attribute(ontoexpline, 'abs_att_aligned_sequence')
 
-# criando metadados e relacionando a individuos do tipo Program:
-metadata    =   create_metadata(ontoexpline, mafft , description, 'Description_Mafft') 
-metadata2   =   create_metadata(ontoexpline, mafft , terms_of_use, 'Termo_de_Uso_Mafft') 
-
-# criando individuos do tipo Attribute | criando individuo do tipo metadata e atribuindo-o ao atributo criado
-# deve existir um atributo para cada porta createport(associar porta com programa, associar porta com atributo)
-# da pra associar atributos diferentes a mesma porta
-#criar metodo pra criar porta, criar metodo para associar o atributo a uma porta
-
-# criando portas de entrada
+# 2 - Definindo individuo do tipo Port | criando individuo do tipo metadata e atribuindo-o a um attribute
+# portas de entrada
 _6merpair       =   create_port(ontoexpline, '_6merpair')
 global_pair     =   create_port(ontoexpline, 'global_pair')
 op              =   create_port(ontoexpline, 'op')
-# criando portas de saida
+# portas de saida
 aligned_sequence =   create_port(ontoexpline, 'aligned_sequence')
 
-#associando portas de entrada e saida ao programa
-associate_port_to_program(ontoexpline, mafft, [_6merpair, global_pair, op], [aligned_sequence])
+# 3 - Associando atributos (abstratos) a portas (concretas)
+associate_att_to_port(ontoexpline, abs_att_6merpair, _6merpair)
+associate_att_to_port(ontoexpline, abs_att_global_pair, global_pair)
+associate_att_to_port(ontoexpline, abs_att_op, op)
+associate_att_to_port(ontoexpline, abs_att_aligned_sequence, aligned_sequence)
 
+# 4 - Definindo programa
+mafft       =   create_program(ontoexpline, 'Mafft', sequence_alignment, [_6merpair, global_pair, op],[aligned_sequence])
 
-# criando atributos abstratos de entrada
-abs_att_6merpair        =   create_attribute(ontoexpline, 'abs_att__6merpair')
-abs_att_global_pair     =   create_attribute(ontoexpline, 'abs_att_global_pair')
-abs_att_op              =   create_attribute(ontoexpline, 'abs_att_op')
-# criando atributos abstratos de saida
-abs_att_aligned_sequence = create_attribute(ontoexpline, 'abs_att_aligned_sequence')
+# 5 - Definindo individuo do tipo relação de entrada | associando atributos a relação
+in_relation_aa_alignment    =   create_relation(ontoexpline, 'In_relation_aa_alignment')
+out_relation_aa_alignment   =   create_relation(ontoexpline, 'Out_relation_aa_alignment')
 
-# auto                        =   create_attribute(ontoexpline, 'Auto')
-# auto_description            =   create_metadata(ontoexpline, auto , description, 'Mafft_Auto', 'Automatically selects an appropriate strategy from L-INS-i, FFT-NS-i and FFT-NS-2, according to data size. Default: off (always FFT-NS-2)' ) 
-# _6merpair                   =   create_attribute(ontoexpline, '6merpair')
-# _6merpair_description       =   create_metadata(ontoexpline, _6merpair, description, '6merpair_Description', 'Distance is calculated based on the number of shared 6mers. Default: on')
-# global_pair                 =   create_attribute(ontoexpline, 'GlobalPair')
-# global_pair_description     =   create_metadata(ontoexpline, global_pair, description, 'globalpair_Description', 'All pairwise alignments are computed with the Needleman-Wunsch algorithm. More accurate but slower than --6merpair. Suitable for a set of globally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (G-INS-i). Default: off (6mer distance is used)')
-# op                          =   create_attribute(ontoexpline, 'Op')    
-# op_description              =   create_metadata(ontoexpline, op , description, 'Op_Description', 'Gap opening penalty at group-to-group alignment. Default: 1.53') 
-# ep                          =   create_attribute(ontoexpline, 'Ep')
-# ep_description              =   create_metadata(ontoexpline, ep , description, 'Ep_Description', 'Offset value, which works like gap extension penalty, for group-to-group alignment. Default: 0.123') 
+# 6 - Associando atributos a relações
+associate_attriute_to_relation(ontoexpline, in_relation_aa_alignment, [abs_att_6merpair, abs_att_global_pair, abs_att_op])
+associate_attriute_to_relation(ontoexpline, out_relation_aa_alignment, [abs_att_aligned_sequence])
 
-# # criando individuo do tipo relação de entrada | associando atributos a relação
-# # portas na provone relacionando aos atributos abstratos 
-# in_relation_mafft    =   create_relation(ontoexpline, 'Relation_in_Mafft')
-# associate_relation_to_attributes(ontoexpline, in_relation_mafft, [validated_sequence, auto, _6merpair, global_pair, op, ep])
+# 7 - Definindo atividade abstrata
+aa_2    = create_abstract_activity(ontoexpline, 'AA_Alignment', sequence_alignment,  [in_relation_aa_alignment], [out_relation_aa_alignment], False)
 
-
-# #  criando atributo gerado
-# aligned_sequence    = create_attribute(ontoexpline, 'aligned_sequence')
-
-# # criando individuo do tipo relação de entrada | associando atributos a relação
-# out_relation_mafft   =   create_relation(ontoexpline, 'Relation_out_Mafft')
-# associate_relation_to_attributes(ontoexpline, out_relation_mafft, 'output', [aligned_sequence])
 
 # # -------------------------------------------------------------------------------------------------
 # # criando programa
