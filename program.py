@@ -13,6 +13,11 @@ def create_program(ontoexpline, program, domain_type, input_ports, output_ports)
     # print('****', domain_type)
     # create_ports(ontoexpline, new_program)
     ontoexpline.save(file = "ontologies/ontoexpline.owl", format = "rdfxml")
+    for in_port in input_ports:
+        new_program.hasInPort.append(in_port)
+    
+    for out_port in output_ports:
+        new_program.hasOutPort.append(out_port)
     return new_program
 
 ################################################################################################ 

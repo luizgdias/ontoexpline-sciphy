@@ -10,6 +10,7 @@
 
 
 def create_abstract_activity(ontoexpline, aa_name, aa_domain_type, input_relation, output_relation, optional):
+    print(aa_domain_type)
     """[função que cria atividades abstratas]
 
     Arguments:

@@ -360,16 +360,18 @@
   <rdfs:subClassOf rdf:resource="#Activity_Type"/>
 </owl:Class>
 
-<owl:Class rdf:about="#Phylogenetic_tree_generation">
+<owl:Class rdf:about="#Phylogenetic_tree_generation_operation_0547">
   <rdfs:subClassOf rdf:resource="#Bio"/>
+  <rdfs:subClassOf rdf:resource="#Activity_Domain_Type"/>
 </owl:Class>
 
 <owl:Class rdf:about="#Relation">
   <rdfs:subClassOf rdf:resource="#Experiment_Line"/>
 </owl:Class>
 
-<owl:Class rdf:about="#Sequence_alignment_conversion">
+<owl:Class rdf:about="#Sequence_alignment_conversion_operation_0260">
   <rdfs:subClassOf rdf:resource="#Bio"/>
+  <rdfs:subClassOf rdf:resource="#Activity_Domain_Type"/>
 </owl:Class>
 
 <owl:Class rdf:about="#Sequence_alignment_operation_0292">
@@ -377,8 +379,9 @@
   <rdfs:subClassOf rdf:resource="#Bio"/>
 </owl:Class>
 
-<owl:Class rdf:about="#Sequence_alignment_refinament">
+<owl:Class rdf:about="#Sequence_alignment_refinament_operation_2089">
   <rdfs:subClassOf rdf:resource="#Bio"/>
+  <rdfs:subClassOf rdf:resource="#Activity_Domain_Type"/>
 </owl:Class>
 
 <owl:Class rdf:about="#Sequencing_quality_control">
@@ -449,6 +452,8 @@
 
 <Program rdf:about="#Remove_Pipe">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasInPort rdf:resource="#Sequence_input"/>
+  <hasOutPort rdf:resource="#Validated_sequence"/>
 </Program>
 
 <Metadata rdf:about="#Description_Remove_Pipe">
@@ -464,11 +469,15 @@
 <Relation rdf:about="#In_relation_aa_validation">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <composedBy rdf:resource="#Sequence_input"/>
+  <composedBy rdf:resource="#abs_att_aligned_sequence"/>
 </Relation>
 
 <Relation rdf:about="#Out_relation_aa_validation">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <composedBy rdf:resource="#Validated_sequence"/>
+  <composedBy rdf:resource="#abs_att_EMBL_format"/>
+  <composedBy rdf:resource="#abs_att_Fasta_format"/>
+  <composedBy rdf:resource="#abs_att_GenBank_format"/>
 </Relation>
 
 <Abstract_activity rdf:about="#AA_Validation">
@@ -476,6 +485,203 @@
   <rdf:type rdf:resource="#Sequencing_quality_control"/>
   <hasInputRelation rdf:resource="#In_relation_aa_validation"/>
   <hasOutputRelation rdf:resource="#Out_relation_aa_validation"/>
+</Abstract_activity>
+
+<Attribute rdf:about="#abs_att__6merpair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#_6merpair"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_global_pair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#global_pair"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_op">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#op"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_aligned_sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#aligned_sequence"/>
+  <wasAssociatedWith rdf:resource="#OutFileName"/>
+  <wasAssociatedWith rdf:resource="#Clustalw_output_file"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_maxhours">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#Maxhours"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_maxiter">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#Maxiter"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_interactive">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#Interactive"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_quickTree">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#QuickTree"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_negative">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#Negative"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_seqnos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#SeqNos"/>
+</Attribute>
+
+<Port rdf:about="#_6merpair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#global_pair">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#op">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#aligned_sequence">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Program rdf:about="#Mafft">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasInPort rdf:resource="#_6merpair"/>
+  <hasInPort rdf:resource="#global_pair"/>
+  <hasInPort rdf:resource="#op"/>
+  <hasOutPort rdf:resource="#aligned_sequence"/>
+</Program>
+
+<Port rdf:about="#Maxhours">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#Maxiter">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#OutFileName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Program rdf:about="#Muscle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasInPort rdf:resource="#Maxhours"/>
+  <hasInPort rdf:resource="#Maxiter"/>
+  <hasOutPort rdf:resource="#OutFileName"/>
+</Program>
+
+<Port rdf:about="#Interactive">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#QuickTree">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#Negative">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#SeqNos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#Clustalw_output_file">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Program rdf:about="#ClustalW">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasInPort rdf:resource="#Interactive"/>
+  <hasInPort rdf:resource="#QuickTree"/>
+  <hasInPort rdf:resource="#Negative"/>
+  <hasInPort rdf:resource="#SeqNos"/>
+</Program>
+
+<Relation rdf:about="#In_relation_aa_alignment">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <composedBy rdf:resource="#abs_att__6merpair"/>
+  <composedBy rdf:resource="#abs_att_global_pair"/>
+  <composedBy rdf:resource="#abs_att_op"/>
+  <composedBy rdf:resource="#abs_att_maxhours"/>
+  <composedBy rdf:resource="#abs_att_maxiter"/>
+  <composedBy rdf:resource="#abs_att_negative"/>
+  <composedBy rdf:resource="#abs_att_quickTree"/>
+  <composedBy rdf:resource="#abs_att_seqnos"/>
+</Relation>
+
+<Relation rdf:about="#Out_relation_aa_alignment">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <composedBy rdf:resource="#abs_att_aligned_sequence"/>
+</Relation>
+
+<Abstract_activity rdf:about="#AA_Alignment">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Sequence_alignment_operation_0292"/>
+  <hasInputRelation rdf:resource="#In_relation_aa_alignment"/>
+  <hasOutputRelation rdf:resource="#Out_relation_aa_alignment"/>
+</Abstract_activity>
+
+<Attribute rdf:about="#abs_att_EMBL_format">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#EMBL_format"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_GenBank_format">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#GenBank_format"/>
+</Attribute>
+
+<Attribute rdf:about="#abs_att_Fasta_format">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <wasAssociatedWith rdf:resource="#Fasta_Format"/>
+</Attribute>
+
+<Port rdf:about="#EMBL_format">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#GenBank_format">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Port rdf:about="#Fasta_Format">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Port>
+
+<Program rdf:about="#ReadSeq">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasInPort rdf:resource="#aligned_sequence"/>
+  <hasOutPort rdf:resource="#EMBL_format"/>
+  <hasOutPort rdf:resource="#GenBank_format"/>
+  <hasOutPort rdf:resource="#Fasta_Format"/>
+</Program>
+
+<Relation rdf:about="#In_relation_aa_readseq">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Relation>
+
+<Relation rdf:about="#Out_relation_aa_readseq">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Relation>
+
+<Abstract_activity rdf:about="#AA_Converter">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Sequence_alignment_conversion_operation_0260"/>
+  <hasInputRelation rdf:resource="#In_relation_aa_readseq"/>
+  <hasOutputRelation rdf:resource="#Out_relation_aa_readseq"/>
 </Abstract_activity>
 
 

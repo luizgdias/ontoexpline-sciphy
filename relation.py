@@ -3,7 +3,7 @@ def create_relation(ontoexpline, relation_name):
     return(relation)
     
 
-def associate_attriute_to_relation(ontoexpline, relation, attributes):
+def associate_attriutes_to_relation(ontoexpline, relation, attributes):
     # print(relation)
     if(relation):
         for att in attributes:

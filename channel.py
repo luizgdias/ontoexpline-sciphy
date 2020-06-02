@@ -8,7 +8,7 @@
 # ramos ProvONE e ExpLine na ontoexpline.
 ################################################################################################ 
 
-def create_channel(ontoexpline, ch_name, relation_list):
+def create_channel(ontoexpline, aa_1, aa_2):
     """[função que cria canais entre portas]
 
     Arguments:
@@ -16,10 +16,11 @@ def create_channel(ontoexpline, ch_name, relation_list):
         ch_name {[string]} -- [string que identifica o canal]
         relation_list {[list]} -- [lista de relações que compõem o canal a ser criado]
     """   
-    ch = ontoexpline.Channel(ch_name)
-    for relation in relation_list:
-        relation.belongsTo.append(ch)
+    ch = 'ontoexpline.Channel(ch_name)'
+    # for relation in relation_list:
+    #     relation.belongsTo.append(ch)
 
+    return(ch)
 
 
 
