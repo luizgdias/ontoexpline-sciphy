@@ -6,8 +6,7 @@ def create_relation(ontoexpline, relation_name):
 def associate_attriutes_to_relation(ontoexpline, relation, attributes):
     # print(relation)
     if(relation):
-        for att in attributes:
-            relation.composedBy.append(att)
+        relation.composedBy = attributes
     else:
         print("Relation.py -> Relação não existe")
     

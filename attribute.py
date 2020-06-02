@@ -9,4 +9,6 @@ def create_attribute(ontoexpline, att_name):
     return(att)
 
 def associate_att_to_port(ontoexpline, att, port):
+    print("***att: ", att)
+    print("***port: ", port)
     att.wasAssociatedWith.append(port)
